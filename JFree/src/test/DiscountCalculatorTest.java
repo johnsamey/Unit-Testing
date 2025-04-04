@@ -14,47 +14,26 @@ public class DiscountCalculatorTest {
     @Test
     public void testIsTheSpecialWeekWhenFalse() throws Exception {
         // Arrange
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2025, Calendar.MARCH, 22);  // March 22, 2025
-        Date date = calendar.getTime();
-        Week week = new Week(date);
-
-        System.out.println("Week = " + week);
+        Week week = new Week(20, 2025);
         DiscountCalculator calculator = new DiscountCalculator(week);
-        // Act
-        boolean ans = calculator.isTheSpecialWeek();
 
         // Assert
-        assertFalse(ans);
+        assertFalse(calculator.isTheSpecialWeek());
     }
 
-    // Test missing cases ( JUNE, 23 is a date in week 26 )
     @Test
     public void testIsTheSpecialWeekWhenTrue() throws Exception {
         // Arrange
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2025, Calendar.JUNE, 23);  // March 22, 2025
-        Date date = calendar.getTime();
-        Week week = new Week(date);
-
-        System.out.println("Week = " + week);
+        Week week = new Week(26, 2025);
         DiscountCalculator calculator = new DiscountCalculator(week);
-        // Act
-        boolean ans = calculator.isTheSpecialWeek();
 
         // Assert
-        assertTrue(ans);
+        assertTrue(calculator.isTheSpecialWeek());
     }
 
     @Test
     public void testGetDiscountPercentageForEvenWeek() throws Exception {
-        // Arrange
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2025, Calendar.MARCH, 15);  // Week 12 (even)
-        Date date = calendar.getTime();
-        Week week = new Week(date);
-
-        System.out.println("Even week = " + week);
+        Week week = new Week(40, 2025);
         DiscountCalculator calculator = new DiscountCalculator(week);
 
         // Act
@@ -66,14 +45,7 @@ public class DiscountCalculatorTest {
 
     @Test
     public void testGetDiscountPercentageForOddWeek() throws Exception {
-        // Arrange
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2025, Calendar.MARCH, 10);  // Week 11 (odd)
-        Date date = calendar.getTime();
-        Week week = new Week(date);
-
-
-        System.out.println("Odd week = " + week);
+        Week week = new Week(41, 2025);
         DiscountCalculator calculator = new DiscountCalculator(week);
 
         // Act
